@@ -49,14 +49,15 @@ $(function() {
 
     $(".form_login").submit(function(e) {
         e.preventDefault();
+        console.log(123);
         $.ajax({
             type: "POST",
             url: "/api/login",
             data: $(this).serialize(),
             success: function(res) {
 
-
-                if (status != 0) {
+                console.log(res);
+                if (res.status !== 0) {
                     return layer.msg(res.message)
                 }
                 layer.msg("登录成功")
